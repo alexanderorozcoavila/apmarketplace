@@ -44,11 +44,15 @@
 						</button>
 					</form>
 				</div>
+				<div class="leo_search">
+					<div class="leo_item row">
+
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
 <style type="text/css">
 	.search-widget {
 		width: 100%;
