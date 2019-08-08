@@ -53,8 +53,8 @@ class ApmarketplaceproductaddModuleFrontController extends ModuleFrontController
                 $vendor = new ApmarketplaceVendors($id_apmarketplace_vendor);
                 $products = new ApmarketplaceProduct();
                 $product = $products->getProductByIdVendor((int)$id_apmarketplace_vendor);
-                if (true){
-                  $vars['notification'] = $this->l('Ha superado el maximo numero de productos de su plan '. $vendor->fax);
+                if (count($product) => (int)$vendor->fax){
+                  $vars['notification'] = $this->l('Ha superado el maximo numero de productos de su plan');
                 }
                 if ($vendor->active == 0) {
                     $vars['check'] = 0;
@@ -115,33 +115,43 @@ class ApmarketplaceproductaddModuleFrontController extends ModuleFrontController
         $objproduct->redirect_type = '404';
         $objproduct->active = 1;
 
-        $objproduct->add(true, false);
-        $id_product = $objproduct->id;
+        $id_apmarketplace_vendor = $this->context->cookie->cookie_vendor;
+        $vendor = new ApmarketplaceVendors($id_apmarketplace_vendor);
+        $products = new ApmarketplaceProduct();
+        $product = $products->getProductByIdVendor((int)$id_apmarketplace_vendor);
 
-        $product = new ApmarketplaceProduct();
-        $product->id_product = $id_product;
-        $product->id_apmarketplace_vendor = $this->context->cookie->cookie_vendor;
-        $product->add(true, false);
-        $categories = Tools::getValue('categories');
-        ApmarketplaceVendorStats::updateProductCategories($id_product, $categories);
-        $files = $_FILES;
-        unset($files['leo_media']);
-        if (!empty($files)) {
-            $position = 1;
-            foreach ($files as $val_f) {
-                if ($val_f['size'] != 0) {
-                    $vendor_stats = new ApmarketplaceVendorStats();
-                    $vendor_stats->addImageProduct($id_product, $val_f, $position);
-                    $position = $position + 1;
+        if (count($product) => (int)$vendor->fax){
+            $vars['notification'] = $this->l('Ha superado el numero de productos que puede publicar.');
+        }else{
+            $objproduct->add(true, false);
+            $id_product = $objproduct->id;
+
+            $product = new ApmarketplaceProduct();
+            $product->id_product = $id_product;
+            $product->id_apmarketplace_vendor = $this->context->cookie->cookie_vendor;
+            $product->add(true, false);
+            $categories = Tools::getValue('categories');
+            ApmarketplaceVendorStats::updateProductCategories($id_product, $categories);
+            $files = $_FILES;
+            unset($files['leo_media']);
+            if (!empty($files)) {
+                $position = 1;
+                foreach ($files as $val_f) {
+                    if ($val_f['size'] != 0) {
+                        $vendor_stats = new ApmarketplaceVendorStats();
+                        $vendor_stats->addImageProduct($id_product, $val_f, $position);
+                        $position = $position + 1;
+                    }
                 }
             }
+            $products = new Product($id_product);
+            $products->addWs(true, false);
+            $id_stock_available = StockAvailableCore::getStockAvailableIdByProductId($id_product, 0, $this->id_shop);
+            $stockAvailable = new StockAvailable($id_stock_available);
+            $stockAvailable->quantity = Tools::getValue('product_quantity');
+            $stockAvailable->update(false);
         }
-        $products = new Product($id_product);
-        $products->addWs(true, false);
-        $id_stock_available = StockAvailableCore::getStockAvailableIdByProductId($id_product, 0, $this->id_shop);
-        $stockAvailable = new StockAvailable($id_stock_available);
-        $stockAvailable->quantity = Tools::getValue('product_quantity');
-        $stockAvailable->update(false);
+
         //Tools::redirect($this->context->shop->getBaseURL(true, true) . 'productlist');
     }
 }

@@ -1,4 +1,4 @@
-{* 
+{*
 * @Module Name: AP Page Builder
 * @Website: apollotheme.com - prestashop template provider
 * @author Apollotheme <apollotheme@gmail.com>
@@ -79,7 +79,7 @@
 							<div {if $lang.id_lang != $id_lang}style="display:none;"{/if} class="lang-lang lang_{$lang.id_lang} ">
 								<textarea class="form-control autoload_rte2" name="product_des[{$lang.id_lang}]" rows="5"></textarea>
 							</div>
-						{/foreach}	
+						{/foreach}
 					</div>
 				</div>
 			</div>
@@ -201,5 +201,5 @@
 				</div>
 			</div>
 		</div>
-	</form>				
+	</form>
 {/block}
