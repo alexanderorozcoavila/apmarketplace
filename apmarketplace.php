@@ -154,7 +154,7 @@ class Apmarketplace extends Module
         $this->uninstallModuleTab('review');
         $this->uninstallModuleTab('order');
         $this->uninstallModuleTab('question');
-        
+
         return parent::uninstall();
     }
 
@@ -364,15 +364,15 @@ class Apmarketplace extends Module
         }
     }
 
-    public function hookdisplayWrapperTop()
-    {
-        if (Tools::getIsset('controller') && Tools::getValue('controller') == 'search') {
-            $this->smarty->assign(array(
-                'name' => Tools::getValue('s'),
-            ));
-        }
-        return $this->display(__FILE__, 'views/templates/hook/search.tpl');
-    }
+    // public function hookdisplayWrapperTop()
+    // {
+    //     if (Tools::getIsset('controller') && Tools::getValue('controller') == 'search') {
+    //         $this->smarty->assign(array(
+    //             'name' => Tools::getValue('s'),
+    //         ));
+    //     }
+    //     return $this->display(__FILE__, 'views/templates/hook/search.tpl');
+    // }
 
     public function hookdisplayProductAdditionalInfo($params)
     {
@@ -437,7 +437,7 @@ class Apmarketplace extends Module
                     'id_customer' => $this->context->cookie->id_customer,
                 ));
             }
-            
+
             $id_customer = $this->context->cookie->id_customer;
             $question = new ApmarketplaceQuestion();
             $questions = $question->getByIDProduct($id_product);
@@ -793,7 +793,7 @@ class Apmarketplace extends Module
                 'module' => 'apmarketplace',
             )
         );
-        
+
         $routes['module-apmarketplace-orderslist'] = array(
             'controller' => 'orderslist',
             'rule' => 'orderslist',
