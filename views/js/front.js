@@ -1,4 +1,4 @@
-/**	
+/**
 * 2007-2018 PrestaShop
 *
 * NOTICE OF LICENSE
@@ -76,15 +76,15 @@ function ajaxQuestionAnswer(id_customer, id_product, id_question, content)
 		success: function (result)
 		{
 			if (result == '1') {
-				location.reload();	
-			}			
+				location.reload();
+			}
 		}
 	});
 }
 
 function searchProduct()
 {
-	$('#search_widget').hide();
+	// $('#search_widget').hide();
 	$('.leo_search').keyup(function() {
 		if ($(this).val().length >= 3) {
 			var name = $(this).val();
@@ -126,7 +126,7 @@ function searchProduct()
 						$('body').click(function() {
 							$('.leo_item').html('');
 						});
-					}			
+					}
 				}
 			});
 		}
@@ -149,7 +149,7 @@ function review()
 function loadReview()
 {
 	if ($('.open-review-form').length) {
-		var id_product = $('.open-review-form').data('id-product');		
+		var id_product = $('.open-review-form').data('id-product');
 		var is_logged = $('.open-review-form').data('is-logged');
 		$.ajax({
 			type: 'POST',
@@ -159,13 +159,13 @@ function loadReview()
 			cache: false,
 			data: {
 				"action": "render-modal-review",
-				"id_product": id_product,				
+				"id_product": id_product,
 				"is_logged": is_logged
 			},
 			success: function (result)
 			{
 				if(result != '')
-				{						
+				{
 					$('body').append(result);
 					activeEventModalReview();
 					activeStar();
@@ -175,12 +175,12 @@ function loadReview()
 				{
 					alert(review_error);
 				}
-							
+
 			}
 		});
 		$('.open-review-form').click(function(){
 			if ($('#criterions_list').length)
-			{	
+			{
 				$('.leo-modal-review').modal('show');
 			}
 			else
@@ -197,7 +197,7 @@ function loadReview()
 					$('.leo-modal-review .modal-body').append('<div class="form-group disable-form-review has-danger text-center"><label class="form-control-label">'+disable_review_form_txt+'</label></div>');
 					$('.leo-modal-review').modal('show');
 				}
-				
+
 			}
 			return false;
 		});
@@ -220,9 +220,9 @@ function activeEventModalReview()
 				$(this).addClass('active');
 				$('.leo-modal-review-bt-text').hide();
 				$('.leo-modal-review-loading').css({'display':'block'});
-				
+
 				$('.new_review_form_content input, .new_review_form_content textarea').each(function(){
-					
+
 					if ($(this).val() == '')
 					{
 						$(this).parent('.form-group').addClass('leo-has-error');
@@ -234,7 +234,7 @@ function activeEventModalReview()
 						$(this).removeAttr('required');
 					}
 				})
-				
+
 				if ($('.new_review_form_content .form-group.leo-has-error').length)
 				{
 					$(this).removeClass('active');
@@ -258,7 +258,7 @@ function activeEventModalReview()
 								var object_result = $.parseJSON(result);
 								$('.leo-modal-review-bt').fadeOut('slow', function() {
 									$(this).remove();
-									
+
 								});
 								$('.leo-modal-review .modal-body>.row').fadeOut('slow', function() {
 									$(this).remove();
@@ -278,7 +278,7 @@ function activeEventModalReview()
 							{
 								alert(review_error);
 							}
-							
+
 						},
 						error: function (XMLHttpRequest, textStatus, errorThrown) {
 							alert("TECHNICAL ERROR: \n\nDetails:\nError thrown: " + XMLHttpRequest + "\n" + 'Text status: ' + textStatus);
@@ -288,16 +288,16 @@ function activeEventModalReview()
 				}
 				$('.leo-fake-button').trigger('click');
 			}
-			
+
 		})
 	})
-	
+
 	$('.leo-modal-review').on('hide.bs.modal', function (e) {
 		if (!$('.leo-modal-review-bt').length && !$('.leo-modal-review .modal-body .disable-form-review').length) {
 			location.reload();
 		}
 	})
-	
+
 }
 
 function activeStar()
@@ -376,14 +376,14 @@ function sendMassage()
 					'email_ven' : email_ven,
 				},
 				success: function (data)
-				{	
+				{
 					if (data == "1") {
-						$('.leo-success').show();	
+						$('.leo-success').show();
 					} else {
 						$('.leo-error').show();
-					}	 
-				}	
+					}
+				}
 			});
-		});	
+		});
 	}
 }
