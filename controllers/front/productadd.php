@@ -39,7 +39,7 @@ class ApmarketplaceproductaddModuleFrontController extends ModuleFrontController
     public function initContent()
     {
         $vars = array();
-        $vars['notification'] = $this->l('Ingresooooo');
+
         if (Tools::getIsset('controller') && Tools::getValue('controller') == 'productadd') {
             $baseurl = $this->context->shop->getBaseURL(true, true);
             if ($this->context->cookie->__isset('cookie_vendor')) {
@@ -51,6 +51,8 @@ class ApmarketplaceproductaddModuleFrontController extends ModuleFrontController
                 $vars['check'] = 1;
                 $id_apmarketplace_vendor = $this->context->cookie->cookie_vendor;
                 $vendor = new ApmarketplaceVendors($id_apmarketplace_vendor);
+                $product = $products->getProductByIdVendor((int)$id_apmarketplace_vendor);
+                $vars['notification'] = $this->l('Numero productos'.count($product););
                 if ($vendor->active == 0) {
                     $vars['check'] = 0;
                 }
