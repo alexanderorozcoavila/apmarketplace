@@ -51,6 +51,7 @@ class ApmarketplaceproductaddModuleFrontController extends ModuleFrontController
                 $vars['check'] = 1;
                 $id_apmarketplace_vendor = $this->context->cookie->cookie_vendor;
                 $vendor = new ApmarketplaceVendors($id_apmarketplace_vendor);
+                $products = new ApmarketplaceProduct();
                 $product = $products->getProductByIdVendor((int)$id_apmarketplace_vendor);
                 $vars['notification'] = $this->l('Numero productos'.count($product););
                 if ($vendor->active == 0) {
