@@ -139,6 +139,12 @@ class AdminApmarketplaceVendorsController extends ModuleAdminController
                     ),
                     array(
                         'type' => 'text',
+                        'label' => $this->l('Free Plan'),
+                        'name' => 'freeplan',
+                        'hint' => $this->l('Cantidad de Productos'),
+                    ),
+                    array(
+                        'type' => 'text',
                         'label' => $this->l('Facebook'),
                         'name' => 'fb',
                         'desc' => $this->l('https://www.facebook.com'),
@@ -259,6 +265,13 @@ class AdminApmarketplaceVendorsController extends ModuleAdminController
                         'name' => 'phone',
                         'required' => true,
                         'hint' => $this->l('Phone of Vendor'),
+                    ),
+                    array(
+                        'type' => 'text',
+                        'label' => $this->l('Free Plan'),
+                        'name' => 'freeplan',
+                        // 'required' => true,
+                        'hint' => $this->l('Cantidad de productos'),
                     ),
                     array(
                         'type' => 'text',
@@ -388,6 +401,7 @@ class AdminApmarketplaceVendorsController extends ModuleAdminController
             $obj->last_name = Tools::getValue('last_name');
             $obj->email = Tools::getValue('first_name');
             $obj->phone = Tools::getValue('phone');
+            $obj->freeplan = Tools::getValue('freeplan');
             $obj->fb = Tools::getValue('fb');
             $obj->tt = Tools::getValue('tt');
             $obj->fax = Tools::getValue('fax');
@@ -408,7 +422,7 @@ class AdminApmarketplaceVendorsController extends ModuleAdminController
                 if (file_exists($link)) {
                     unlink($link);
                 }
-                
+
                 $this->module->uploadImageServiceVendor($_FILES['leo_image']);
             }
 

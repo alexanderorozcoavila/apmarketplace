@@ -32,6 +32,7 @@ class ApmarketplaceVendors extends ObjectModel
     public $email;
     public $image;
     public $phone;
+    public $freeplan;
     public $fb;
     public $tt;
     public $fax;
@@ -40,7 +41,7 @@ class ApmarketplaceVendors extends ObjectModel
     public $pass_word;
     public $date_add;
     public $active;
-    
+
     public static $definition = array(
         'table' => 'apmarketplace_vendor',
         'primary' => 'id_apmarketplace_vendor',
@@ -53,6 +54,7 @@ class ApmarketplaceVendors extends ObjectModel
             'email' =>           array('type' => self::TYPE_STRING, 'validate'),
             'image' =>           array('type' => self::TYPE_STRING),
             'phone' =>           array('type' => self::TYPE_INT, 'validate'),
+            'freeplan' =>           array('type' => self::TYPE_INT),
             'fb' =>              array('type' => self::TYPE_STRING),
             'tt' =>              array('type' => self::TYPE_STRING),
             'fax' =>             array('type' => self::TYPE_INT),
@@ -69,7 +71,7 @@ class ApmarketplaceVendors extends ObjectModel
         # Insert multi_shop
         $this->def['table'] = self::$definition['table'];
         ShopCore::addTableAssociation($this->def['table'], array('type' => 'shop'));
-        
+
         parent::__construct($id, $id_lang, $id_shop);
     }
 
@@ -117,6 +119,12 @@ class ApmarketplaceVendors extends ObjectModel
         if ($obj->phone != '') {
             Db::getInstance()->execute('UPDATE `'._DB_PREFIX_.'apmarketplace_vendor`
                 SET `phone` = "'.pSQL($obj->phone).'"
+                WHERE id_apmarketplace_vendor = ' . (int)$obj->id_apmarketplace_vendor);
+        }
+
+        if ($obj->freeplan != '') {
+            Db::getInstance()->execute('UPDATE `'._DB_PREFIX_.'apmarketplace_vendor`
+                SET `freeplan` = "'.pSQL($obj->freeplan).'"
                 WHERE id_apmarketplace_vendor = ' . (int)$obj->id_apmarketplace_vendor);
         }
 
