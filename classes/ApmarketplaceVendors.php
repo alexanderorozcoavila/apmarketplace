@@ -32,7 +32,7 @@ class ApmarketplaceVendors extends ObjectModel
     public $email;
     public $image;
     public $phone;
-    public $freeplan;
+    // public $freeplan;
     public $fb;
     public $tt;
     public $fax;
@@ -54,7 +54,7 @@ class ApmarketplaceVendors extends ObjectModel
             'email' =>           array('type' => self::TYPE_STRING, 'validate'),
             'image' =>           array('type' => self::TYPE_STRING),
             'phone' =>           array('type' => self::TYPE_INT, 'validate'),
-            'freeplan' =>           array('type' => self::TYPE_INT),
+            // 'freeplan' =>           array('type' => self::TYPE_INT),
             'fb' =>              array('type' => self::TYPE_STRING),
             'tt' =>              array('type' => self::TYPE_STRING),
             'fax' =>             array('type' => self::TYPE_INT),
@@ -122,11 +122,11 @@ class ApmarketplaceVendors extends ObjectModel
                 WHERE id_apmarketplace_vendor = ' . (int)$obj->id_apmarketplace_vendor);
         }
 
-        if ($obj->freeplan != '') {
-            Db::getInstance()->execute('UPDATE `'._DB_PREFIX_.'apmarketplace_vendor`
-                SET `freeplan` = "'.pSQL($obj->freeplan).'"
-                WHERE id_apmarketplace_vendor = ' . (int)$obj->id_apmarketplace_vendor);
-        }
+        // if ($obj->freeplan != '') {
+        //     Db::getInstance()->execute('UPDATE `'._DB_PREFIX_.'apmarketplace_vendor`
+        //         SET `freeplan` = "'.pSQL($obj->freeplan).'"
+        //         WHERE id_apmarketplace_vendor = ' . (int)$obj->id_apmarketplace_vendor);
+        // }
 
         if ($obj->fb != '') {
             Db::getInstance()->execute('UPDATE `'._DB_PREFIX_.'apmarketplace_vendor`

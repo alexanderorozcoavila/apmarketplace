@@ -139,12 +139,6 @@ class AdminApmarketplaceVendorsController extends ModuleAdminController
                     ),
                     array(
                         'type' => 'text',
-                        'label' => $this->l('Free Plan'),
-                        'name' => 'freeplan',
-                        'hint' => $this->l('Cantidad de Productos'),
-                    ),
-                    array(
-                        'type' => 'text',
                         'label' => $this->l('Facebook'),
                         'name' => 'fb',
                         'desc' => $this->l('https://www.facebook.com'),
@@ -159,9 +153,9 @@ class AdminApmarketplaceVendorsController extends ModuleAdminController
                     ),
                     array(
                         'type' => 'text',
-                        'label' => $this->l('Fax'),
+                        'label' => $this->l('Free Plan'),
                         'name' => 'fax',
-                        'hint' => $this->l('Fax of Vendor'),
+                        'hint' => $this->l('Cantidad de Productos permitidos'),
                     ),
                     array(
                         'type' => 'text',
@@ -268,13 +262,6 @@ class AdminApmarketplaceVendorsController extends ModuleAdminController
                     ),
                     array(
                         'type' => 'text',
-                        'label' => $this->l('Free Plan'),
-                        'name' => 'freeplan',
-                        // 'required' => true,
-                        'hint' => $this->l('Cantidad de productos'),
-                    ),
-                    array(
-                        'type' => 'text',
                         'label' => $this->l('Facebook'),
                         'name' => 'fb',
                         'desc' => $this->l('https://www.facebook.com'),
@@ -289,9 +276,9 @@ class AdminApmarketplaceVendorsController extends ModuleAdminController
                     ),
                     array(
                         'type' => 'text',
-                        'label' => $this->l('Fax'),
+                        'label' => $this->l('Free Plan'),
                         'name' => 'fax',
-                        'hint' => $this->l('Fax of Vendor'),
+                        'hint' => $this->l('Cantidad de Productos Permitidos'),
                     ),
                     array(
                         'type' => 'text',
@@ -401,7 +388,7 @@ class AdminApmarketplaceVendorsController extends ModuleAdminController
             $obj->last_name = Tools::getValue('last_name');
             $obj->email = Tools::getValue('first_name');
             $obj->phone = Tools::getValue('phone');
-            $obj->freeplan = Tools::getValue('freeplan');
+            // $obj->freeplan = Tools::getValue('freeplan');
             $obj->fb = Tools::getValue('fb');
             $obj->tt = Tools::getValue('tt');
             $obj->fax = Tools::getValue('fax');
