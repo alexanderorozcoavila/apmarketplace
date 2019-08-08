@@ -39,6 +39,7 @@ class ApmarketplaceproductaddModuleFrontController extends ModuleFrontController
     public function initContent()
     {
         $vars = array();
+        $vars['notification'] = $this->l('Ingresooooo');
         if (Tools::getIsset('controller') && Tools::getValue('controller') == 'productadd') {
             $baseurl = $this->context->shop->getBaseURL(true, true);
             if ($this->context->cookie->__isset('cookie_vendor')) {
@@ -80,7 +81,7 @@ class ApmarketplaceproductaddModuleFrontController extends ModuleFrontController
         $objproduct = new Product();
         $objproduct->tax_name = 'deprecated';
         $objproduct->tax_rate = $objproduct->getTaxesRate(new Address($address));
-        
+
         $name = Tools::getValue('product_name');
         $description = Tools::getValue('product_des');
         $description_short = Tools::getValue('product_short');
@@ -108,7 +109,7 @@ class ApmarketplaceproductaddModuleFrontController extends ModuleFrontController
         $objproduct->id_category_default = Tools::getValue('category');
         $objproduct->redirect_type = '404';
         $objproduct->active = 1;
-        
+
         $objproduct->add(true, false);
         $id_product = $objproduct->id;
 
