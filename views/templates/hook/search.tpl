@@ -31,26 +31,24 @@
 		*/
 	</script>
 {/literal}
-<div class="row">
-	<div class="col-md-12">
-		<div class="wrap-search">
-			<div class="search-widget">
-				<form method="get" action="search">
-					<input type="text" name="s" value="{if isset($name)}{$name}{/if}" aria-label="Search" class="leo_search" autocomplete="off">
-					<button type="submit">
-						<i class="material-icons search"></i>
-			      		<span class="hidden-xl-down">Search</span>
-					</button>
-				</form>
-			</div>
-			<div class="leo_search">
-				<div class="leo_item row">
-
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="wrap-search">
+				<div class="search-widget">
+					<form method="get" action="search">
+						<input type="text" name="s" value="{if isset($name)}{$name}{/if}" aria-label="Search" class="leo_search" autocomplete="off">
+						<button type="submit">
+							<i class="material-icons search"></i>
+				      		<span class="hidden-xl-down">Search</span>
+						</button>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
 <style type="text/css">
 	.search-widget {
 		width: 100%;
