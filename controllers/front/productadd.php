@@ -53,8 +53,8 @@ class ApmarketplaceproductaddModuleFrontController extends ModuleFrontController
                 $vendor = new ApmarketplaceVendors($id_apmarketplace_vendor);
                 $products = new ApmarketplaceProduct();
                 $product = $products->getProductByIdVendor((int)$id_apmarketplace_vendor);
-                if (count($product) => 10){
-                  $vars['notification'] = $this->l('Ha superado el maximo numero de productos de su plan');
+                if (true){
+                  $vars['notification'] = $this->l('Ha superado el maximo numero de productos de su plan '. $vendor->fax);
                 }
                 if ($vendor->active == 0) {
                     $vars['check'] = 0;
