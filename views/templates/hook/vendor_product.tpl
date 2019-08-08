@@ -24,11 +24,14 @@
 *}
 
 {if !empty($vendor)}
-	<label class="leo_vendor">{l s='Vendors' mod='apmarketplace'} : {$vendor->last_name} {$vendor->first_name}</label>
-	<a href="{$baseurl}store?id={$vendor->id_apmarketplace_vendor}">
+	<label class="leo_vendor">{$vendor->last_name} {$vendor->first_name}</label>
+
+	<!-- <label class="leo_vendor">{l s='Vendors' mod='apmarketplace'} : {$vendor->last_name} {$vendor->first_name}</label> -->
+	<!-- <a href="{$baseurl}store?id={$vendor->id_apmarketplace_vendor}">
 		<img style="width:20px;height:20px;border-radius:50%;" src="{$baseurl}modules/apmarketplace/views/img/vendor/{$vendor->image}" title="{$vendor->last_name} {$vendor->first_name}" alt="{$vendor->last_name} {$vendor->first_name}">
-	</a>
-	<label class="leo_vendor">{l s='Phone' mod='apmarketplace'} : {$vendor->phone}</label>
+	</a> -->
+	<!-- <label class="leo_vendor">{l s='Phone' mod='apmarketplace'} : {$vendor->phone}</label> -->
+
 {else}
 	<label class="leo_vendor">{l s='Vendors' mod='apmarketplace'} : {l s='Admin' mod='apmarketplace'}</label>
 {/if}

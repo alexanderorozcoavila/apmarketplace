@@ -120,7 +120,7 @@ class ApmarketplaceproductaddModuleFrontController extends ModuleFrontController
         $products = new ApmarketplaceProduct();
         $product = $products->getProductByIdVendor((int)$id_apmarketplace_vendor);
 
-        if (count($product) >= (int)$vendor->fax){
+        if (count($product) >= $vendor->fax){
             $vars['notification'] = $this->l('Ha superado el numero de productos que puede publicar.');
         }else{
             $objproduct->add(true, false);
