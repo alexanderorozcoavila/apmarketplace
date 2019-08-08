@@ -364,15 +364,15 @@ class Apmarketplace extends Module
         }
     }
 
-    // public function hookdisplayWrapperTop()
-    // {
-    //     if (Tools::getIsset('controller') && Tools::getValue('controller') == 'search') {
-    //         $this->smarty->assign(array(
-    //             'name' => Tools::getValue('s'),
-    //         ));
-    //     }
-    //     return $this->display(__FILE__, 'views/templates/hook/search.tpl');
-    // }
+    public function hookdisplayWrapperTop()
+    {
+        if (Tools::getIsset('controller') && Tools::getValue('controller') == 'search') {
+            $this->smarty->assign(array(
+                'name' => Tools::getValue('s'),
+            ));
+        }
+        return $this->display(__FILE__, 'views/templates/hook/search.tpl');
+    }
 
     public function hookdisplayProductAdditionalInfo($params)
     {
